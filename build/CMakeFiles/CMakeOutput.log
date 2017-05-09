@@ -28,28 +28,28 @@ The CXX compiler identification is GNU, found in "/home/vlad/FromGit/Volume_Rend
 Determining if the C compiler works passed with the following output:
 Change Dir: /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_d6bd2/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_d6bd2.dir/build.make CMakeFiles/cmTC_d6bd2.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_2eaab/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_2eaab.dir/build.make CMakeFiles/cmTC_2eaab.dir/build
 gmake[1]: Entering directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_d6bd2.dir/testCCompiler.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_d6bd2.dir/testCCompiler.c.o   -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_d6bd2
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d6bd2.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_d6bd2.dir/testCCompiler.c.o  -o cmTC_d6bd2 -rdynamic 
+Building C object CMakeFiles/cmTC_2eaab.dir/testCCompiler.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_2eaab.dir/testCCompiler.c.o   -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_2eaab
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2eaab.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_2eaab.dir/testCCompiler.c.o  -o cmTC_2eaab -rdynamic 
 gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_24a0f/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_24a0f.dir/build.make CMakeFiles/cmTC_24a0f.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_c7550/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_c7550.dir/build.make CMakeFiles/cmTC_c7550.dir/build
 gmake[1]: Entering directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_24a0f.dir/CMakeCCompilerABI.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_24a0f.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
-Linking C executable cmTC_24a0f
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_24a0f.dir/link.txt --verbose=1
-/usr/bin/cc      -v CMakeFiles/cmTC_24a0f.dir/CMakeCCompilerABI.c.o  -o cmTC_24a0f -rdynamic  
+Building C object CMakeFiles/cmTC_c7550.dir/CMakeCCompilerABI.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_c7550.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTC_c7550
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c7550.dir/link.txt --verbose=1
+/usr/bin/cc      -v CMakeFiles/cmTC_c7550.dir/CMakeCCompilerABI.c.o  -o cmTC_c7550 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
 COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/4.8/lto-wrapper
@@ -59,8 +59,8 @@ Thread model: posix
 gcc version 4.8.5 (SUSE Linux) 
 COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/bin/
 LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_24a0f' '-rdynamic' '-mtune=generic' '-march=x86-64'
- /usr/lib64/gcc/x86_64-suse-linux/4.8/collect2 --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_24a0f /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/4.8/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/4.8 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../.. CMakeFiles/cmTC_24a0f.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib64/gcc/x86_64-suse-linux/4.8/crtend.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c7550' '-rdynamic' '-mtune=generic' '-march=x86-64'
+ /usr/lib64/gcc/x86_64-suse-linux/4.8/collect2 --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_c7550 /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/4.8/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/4.8 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../.. CMakeFiles/cmTC_c7550.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib64/gcc/x86_64-suse-linux/4.8/crtend.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crtn.o
 gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
 
 
@@ -68,14 +68,14 @@ Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_24a0f/fast"]
-  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_24a0f.dir/build.make CMakeFiles/cmTC_24a0f.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_c7550/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_c7550.dir/build.make CMakeFiles/cmTC_c7550.dir/build]
   ignore line: [gmake[1]: Entering directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_24a0f.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_24a0f.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
-  ignore line: [Linking C executable cmTC_24a0f]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_24a0f.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_24a0f.dir/CMakeCCompilerABI.c.o  -o cmTC_24a0f -rdynamic  ]
+  ignore line: [Building C object CMakeFiles/cmTC_c7550.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_c7550.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTC_c7550]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c7550.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_c7550.dir/CMakeCCompilerABI.c.o  -o cmTC_c7550 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/4.8/lto-wrapper]
@@ -85,8 +85,8 @@ Parsed C implicit link information from above output:
   ignore line: [gcc version 4.8.5 (SUSE Linux) ]
   ignore line: [COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/bin/]
   ignore line: [LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_24a0f' '-rdynamic' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib64/gcc/x86_64-suse-linux/4.8/collect2 --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_24a0f /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/4.8/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/4.8 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../.. CMakeFiles/cmTC_24a0f.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib64/gcc/x86_64-suse-linux/4.8/crtend.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_c7550' '-rdynamic' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib64/gcc/x86_64-suse-linux/4.8/collect2 --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_c7550 /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/4.8/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/4.8 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../.. CMakeFiles/cmTC_c7550.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib64/gcc/x86_64-suse-linux/4.8/crtend.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crtn.o]
     arg [/usr/lib64/gcc/x86_64-suse-linux/4.8/collect2] ==> ignore
     arg [--build-id] ==> ignore
     arg [--eh-frame-hdr] ==> ignore
@@ -96,7 +96,7 @@ Parsed C implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_24a0f] ==> ignore
+    arg [cmTC_c7550] ==> ignore
     arg [/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crt1.o] ==> ignore
     arg [/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crti.o] ==> ignore
     arg [/usr/lib64/gcc/x86_64-suse-linux/4.8/crtbegin.o] ==> ignore
@@ -106,7 +106,7 @@ Parsed C implicit link information from above output:
     arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
     arg [-L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib]
     arg [-L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../..] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/4.8/../../..]
-    arg [CMakeFiles/cmTC_24a0f.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_c7550.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [--as-needed] ==> ignore
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -138,14 +138,14 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_8c927/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_8c927.dir/build.make CMakeFiles/cmTC_8c927.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_9ba0a/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_9ba0a.dir/build.make CMakeFiles/cmTC_9ba0a.dir/build
 gmake[1]: Entering directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_8c927.dir/feature_tests.c.o
-/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_8c927.dir/feature_tests.c.o   -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_8c927
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8c927.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_8c927.dir/feature_tests.c.o  -o cmTC_8c927 -rdynamic 
+Building C object CMakeFiles/cmTC_9ba0a.dir/feature_tests.c.o
+/usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_9ba0a.dir/feature_tests.c.o   -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_9ba0a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9ba0a.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_9ba0a.dir/feature_tests.c.o  -o cmTC_9ba0a -rdynamic 
 gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
 
 
@@ -158,14 +158,14 @@ gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/buil
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_0c85e/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_0c85e.dir/build.make CMakeFiles/cmTC_0c85e.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_8ff62/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_8ff62.dir/build.make CMakeFiles/cmTC_8ff62.dir/build
 gmake[1]: Entering directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0c85e.dir/feature_tests.c.o
-/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_0c85e.dir/feature_tests.c.o   -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_0c85e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0c85e.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_0c85e.dir/feature_tests.c.o  -o cmTC_0c85e -rdynamic 
+Building C object CMakeFiles/cmTC_8ff62.dir/feature_tests.c.o
+/usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_8ff62.dir/feature_tests.c.o   -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_8ff62
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8ff62.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_8ff62.dir/feature_tests.c.o  -o cmTC_8ff62 -rdynamic 
 gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
 
 
@@ -178,14 +178,14 @@ gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/buil
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_1bb36/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_1bb36.dir/build.make CMakeFiles/cmTC_1bb36.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_f933e/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_f933e.dir/build.make CMakeFiles/cmTC_f933e.dir/build
 gmake[1]: Entering directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_1bb36.dir/feature_tests.c.o
-/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_1bb36.dir/feature_tests.c.o   -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/feature_tests.c
-Linking C executable cmTC_1bb36
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_1bb36.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_1bb36.dir/feature_tests.c.o  -o cmTC_1bb36 -rdynamic 
+Building C object CMakeFiles/cmTC_f933e.dir/feature_tests.c.o
+/usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_f933e.dir/feature_tests.c.o   -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/feature_tests.c
+Linking C executable cmTC_f933e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f933e.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_f933e.dir/feature_tests.c.o  -o cmTC_f933e -rdynamic 
 gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
 
 
@@ -196,28 +196,28 @@ gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/buil
 Determining if the CXX compiler works passed with the following output:
 Change Dir: /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_32d1b/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_32d1b.dir/build.make CMakeFiles/cmTC_32d1b.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_49e04/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_49e04.dir/build.make CMakeFiles/cmTC_49e04.dir/build
 gmake[1]: Entering directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_32d1b.dir/testCXXCompiler.cxx.o
-/usr/bin/c++      -o CMakeFiles/cmTC_32d1b.dir/testCXXCompiler.cxx.o -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
-Linking CXX executable cmTC_32d1b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_32d1b.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_32d1b.dir/testCXXCompiler.cxx.o  -o cmTC_32d1b -rdynamic 
+Building CXX object CMakeFiles/cmTC_49e04.dir/testCXXCompiler.cxx.o
+/usr/bin/c++      -o CMakeFiles/cmTC_49e04.dir/testCXXCompiler.cxx.o -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTC_49e04
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_49e04.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_49e04.dir/testCXXCompiler.cxx.o  -o cmTC_49e04 -rdynamic 
 gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_d3c1b/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_d3c1b.dir/build.make CMakeFiles/cmTC_d3c1b.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_e3b67/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_e3b67.dir/build.make CMakeFiles/cmTC_e3b67.dir/build
 gmake[1]: Entering directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_d3c1b.dir/CMakeCXXCompilerABI.cpp.o
-/usr/bin/c++      -o CMakeFiles/cmTC_d3c1b.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
-Linking CXX executable cmTC_d3c1b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d3c1b.dir/link.txt --verbose=1
-/usr/bin/c++       -v CMakeFiles/cmTC_d3c1b.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_d3c1b -rdynamic  
+Building CXX object CMakeFiles/cmTC_e3b67.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++      -o CMakeFiles/cmTC_e3b67.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTC_e3b67
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e3b67.dir/link.txt --verbose=1
+/usr/bin/c++       -v CMakeFiles/cmTC_e3b67.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_e3b67 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
 COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/4.8/lto-wrapper
@@ -227,8 +227,8 @@ Thread model: posix
 gcc version 4.8.5 (SUSE Linux) 
 COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/bin/
 LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d3c1b' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
- /usr/lib64/gcc/x86_64-suse-linux/4.8/collect2 --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_d3c1b /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/4.8/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/4.8 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../.. CMakeFiles/cmTC_d3c1b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib64/gcc/x86_64-suse-linux/4.8/crtend.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crtn.o
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e3b67' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+ /usr/lib64/gcc/x86_64-suse-linux/4.8/collect2 --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_e3b67 /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/4.8/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/4.8 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../.. CMakeFiles/cmTC_e3b67.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib64/gcc/x86_64-suse-linux/4.8/crtend.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crtn.o
 gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
 
 
@@ -236,14 +236,14 @@ Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_d3c1b/fast"]
-  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_d3c1b.dir/build.make CMakeFiles/cmTC_d3c1b.dir/build]
+  ignore line: [Run Build Command:"/usr/bin/gmake" "cmTC_e3b67/fast"]
+  ignore line: [/usr/bin/gmake -f CMakeFiles/cmTC_e3b67.dir/build.make CMakeFiles/cmTC_e3b67.dir/build]
   ignore line: [gmake[1]: Entering directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp']
-  ignore line: [Building CXX object CMakeFiles/cmTC_d3c1b.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_d3c1b.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
-  ignore line: [Linking CXX executable cmTC_d3c1b]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d3c1b.dir/link.txt --verbose=1]
-  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_d3c1b.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_d3c1b -rdynamic  ]
+  ignore line: [Building CXX object CMakeFiles/cmTC_e3b67.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_e3b67.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+  ignore line: [Linking CXX executable cmTC_e3b67]
+  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e3b67.dir/link.txt --verbose=1]
+  ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_e3b67.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_e3b67 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
   ignore line: [COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/4.8/lto-wrapper]
@@ -253,8 +253,8 @@ Parsed CXX implicit link information from above output:
   ignore line: [gcc version 4.8.5 (SUSE Linux) ]
   ignore line: [COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/bin/]
   ignore line: [LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/4.8/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_d3c1b' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
-  link line: [ /usr/lib64/gcc/x86_64-suse-linux/4.8/collect2 --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_d3c1b /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/4.8/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/4.8 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../.. CMakeFiles/cmTC_d3c1b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib64/gcc/x86_64-suse-linux/4.8/crtend.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crtn.o]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e3b67' '-rdynamic' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+  link line: [ /usr/lib64/gcc/x86_64-suse-linux/4.8/collect2 --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_e3b67 /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/4.8/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/4.8 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../.. CMakeFiles/cmTC_e3b67.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib64/gcc/x86_64-suse-linux/4.8/crtend.o /usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crtn.o]
     arg [/usr/lib64/gcc/x86_64-suse-linux/4.8/collect2] ==> ignore
     arg [--build-id] ==> ignore
     arg [--eh-frame-hdr] ==> ignore
@@ -264,7 +264,7 @@ Parsed CXX implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_d3c1b] ==> ignore
+    arg [cmTC_e3b67] ==> ignore
     arg [/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crt1.o] ==> ignore
     arg [/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../lib64/crti.o] ==> ignore
     arg [/usr/lib64/gcc/x86_64-suse-linux/4.8/crtbegin.o] ==> ignore
@@ -274,7 +274,7 @@ Parsed CXX implicit link information from above output:
     arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
     arg [-L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/4.8/../../../../x86_64-suse-linux/lib]
     arg [-L/usr/lib64/gcc/x86_64-suse-linux/4.8/../../..] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/4.8/../../..]
-    arg [CMakeFiles/cmTC_d3c1b.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_e3b67.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc_s] ==> lib [gcc_s]
@@ -304,14 +304,14 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++1y] compiler features compiled with the following output:
 Change Dir: /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_87e47/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_87e47.dir/build.make CMakeFiles/cmTC_87e47.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_60edd/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_60edd.dir/build.make CMakeFiles/cmTC_60edd.dir/build
 gmake[1]: Entering directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_87e47.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++1y -o CMakeFiles/cmTC_87e47.dir/feature_tests.cxx.o -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_87e47
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_87e47.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_87e47.dir/feature_tests.cxx.o  -o cmTC_87e47 -rdynamic 
+Building CXX object CMakeFiles/cmTC_60edd.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++1y -o CMakeFiles/cmTC_60edd.dir/feature_tests.cxx.o -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_60edd
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_60edd.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_60edd.dir/feature_tests.cxx.o  -o cmTC_60edd -rdynamic 
 gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
 
 
@@ -377,14 +377,14 @@ gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/buil
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_d53f8/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_d53f8.dir/build.make CMakeFiles/cmTC_d53f8.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_e3026/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_e3026.dir/build.make CMakeFiles/cmTC_e3026.dir/build
 gmake[1]: Entering directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_d53f8.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_d53f8.dir/feature_tests.cxx.o -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_d53f8
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d53f8.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_d53f8.dir/feature_tests.cxx.o  -o cmTC_d53f8 -rdynamic 
+Building CXX object CMakeFiles/cmTC_e3026.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_e3026.dir/feature_tests.cxx.o -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_e3026
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e3026.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_e3026.dir/feature_tests.cxx.o  -o cmTC_e3026 -rdynamic 
 gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
 
 
@@ -450,14 +450,14 @@ gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/buil
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/gmake" "cmTC_45b36/fast"
-/usr/bin/gmake -f CMakeFiles/cmTC_45b36.dir/build.make CMakeFiles/cmTC_45b36.dir/build
+Run Build Command:"/usr/bin/gmake" "cmTC_87a5a/fast"
+/usr/bin/gmake -f CMakeFiles/cmTC_87a5a.dir/build.make CMakeFiles/cmTC_87a5a.dir/build
 gmake[1]: Entering directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
-Building CXX object CMakeFiles/cmTC_45b36.dir/feature_tests.cxx.o
-/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_45b36.dir/feature_tests.cxx.o -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/feature_tests.cxx
-Linking CXX executable cmTC_45b36
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_45b36.dir/link.txt --verbose=1
-/usr/bin/c++        CMakeFiles/cmTC_45b36.dir/feature_tests.cxx.o  -o cmTC_45b36 -rdynamic 
+Building CXX object CMakeFiles/cmTC_87a5a.dir/feature_tests.cxx.o
+/usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_87a5a.dir/feature_tests.cxx.o -c /home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/feature_tests.cxx
+Linking CXX executable cmTC_87a5a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_87a5a.dir/link.txt --verbose=1
+/usr/bin/c++        CMakeFiles/cmTC_87a5a.dir/feature_tests.cxx.o  -o cmTC_87a5a -rdynamic 
 gmake[1]: Leaving directory '/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/CMakeTmp'
 
 

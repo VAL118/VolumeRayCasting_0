@@ -18,8 +18,6 @@ using namespace std;
 using glm::mat4;
 using glm::vec3;
 
-GLuint DELETE IT;
-
 GLuint g_vao;
 GLuint g_programHandle;
 GLuint g_winWidth = 400;
