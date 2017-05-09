@@ -2,20 +2,30 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <GL/glew.h>
-#include <GL/gl.h>
-#include <GL/glext.h>
-#include <GL/glut.h>
-#include <GL/glm/glm.hpp>
-#include <GL/glm/gtc/matrix_transform.hpp>
-#include <GL/glm/gtx/transform2.hpp>
-#include <GL/glm/gtc/type_ptr.hpp>
+#include <include/GL/glew.h>
+#include <include/GL/gl.h>
+#include <include/GL/glext.h>
+#define GLUT_DISABLE_ATEXIT_HACK
+#include <include/GL/glut.h>
+#include <include/GL/glm/glm.hpp>
+#include <include/GL/glm/gtc/matrix_transform.hpp>
+#include <include/GL/glm/gtx/transform2.hpp>
+#include <include/GL/glm/gtc/type_ptr.hpp>
 
 
 #define GL_ERROR() checkForOpenGLError(__FILE__, __LINE__)
 using namespace std;
 using glm::mat4;
 using glm::vec3;
+GLuint AAAAAADELETE_IT;
+GLuint AAAAAADELETE_IT1;
+GLuint AAAAAADELETE_IT2;
+GLuint AAAAAADELETE_IT;
+GLuint AAAAAADELETE_IT1;
+GLuint AAAAAADELETE_IT2;
+GLuint AAAAAADELETE_IT;
+GLuint AAAAAADELETE_IT1;
+GLuint AAAAAADELETE_IT2;
 GLuint g_vao;
 GLuint g_programHandle;
 GLuint g_winWidth = 400;
@@ -23,6 +33,9 @@ GLuint g_winHeight = 400;
 GLint g_angle = 0;
 GLuint g_frameBuffer;
 // transfer function
+GLuint AAAAAADELETE_IT;
+GLuint AAAAAADELETE_IT1;
+GLuint AAAAAADELETE_IT2;
 GLuint g_tffTexObj;
 GLuint g_bfTexObj;
 GLuint g_texWidth;
@@ -66,9 +79,9 @@ void init()
     g_texHeight = g_winHeight;
     initVBO();
     initShader();
-    g_tffTexObj = initTFF1DTex("tff.dat");
+    g_tffTexObj = initTFF1DTex("../tff.dat");
     g_bfTexObj = initFace2DTex(g_texWidth, g_texHeight);
-    g_volTexObj = initVol3DTex("head256.raw", 256, 256, 225);
+    g_volTexObj = initVol3DTex("../head256.raw", 256, 256, 225);
     GL_ERROR();
     initFrameBuffer(g_bfTexObj, g_texWidth, g_texHeight);
     GL_ERROR();
@@ -90,8 +103,8 @@ void initVBO()
 // draw it contra-clockwise
 // front: 1 5 7 3
 // back: 0 2 6 4
-// left£º0 1 3 2
-// right:7 5 4 6    
+// leftï¿½ï¿½0 1 3 2
+// right:7 5 4 6
 // up: 2 3 7 6
 // down: 1 0 4 5
     GLuint indices[36] = {
@@ -109,7 +122,7 @@ void initVBO()
 	4,5,1
     };
     GLuint gbo[2];
-    
+
     glGenBuffers(2, gbo);
     GLuint vertexdat = gbo[0];
     GLuint veridxdat = gbo[1];
@@ -157,7 +170,7 @@ GLboolean compileCheck(GLuint shader)
 	    GLsizei written;
 	    glGetShaderInfoLog(shader, logLen, &written, log);
 	    cerr << "Shader log: " << log << endl;
-	    free(log);		
+	    free(log);
 	}
     }
     return err;
@@ -172,7 +185,7 @@ GLuint initShaderObj(const GLchar* srcfile, GLenum shaderType)
 	cerr << "Error openning file: " << srcfile << endl;
 	exit(EXIT_FAILURE);
     }
-    
+
     const int MAX_CNT = 10000;
     GLchar *shaderCode = (GLchar *) calloc(MAX_CNT, sizeof(GLchar));
     inFile.read(shaderCode, MAX_CNT);
@@ -251,7 +264,7 @@ GLuint initTFF1DTex(const char* filename)
 	cerr << "Error openning file: " << filename << endl;
 	exit(EXIT_FAILURE);
     }
-    
+
     const int MAX_CNT = 10000;
     GLubyte *tff = (GLubyte *) calloc(MAX_CNT, sizeof(GLubyte));
     inFile.read(reinterpret_cast<char *>(tff), MAX_CNT);
@@ -268,7 +281,7 @@ GLuint initTFF1DTex(const char* filename)
     else
     {
 	cout << filename << "is too large" << endl;
-    }    
+    }
     GLuint tff1DTex;
     glGenTextures(1, &tff1DTex);
     glBindTexture(GL_TEXTURE_1D, tff1DTex);
@@ -277,7 +290,7 @@ GLuint initTFF1DTex(const char* filename)
     glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
     glTexImage1D(GL_TEXTURE_1D, 0, GL_RGBA8, 256, 0, GL_RGBA, GL_UNSIGNED_BYTE, tff);
-    free(tff);    
+    free(tff);
     return tff1DTex;
 }
 // init the 2D texture for render backface 'bf' stands for backface
@@ -296,7 +309,7 @@ GLuint initFace2DTex(GLuint bfTexWidth, GLuint bfTexHeight)
 // init 3D texture to store the volume data used fo ray casting
 GLuint initVol3DTex(const char* filename, GLuint w, GLuint h, GLuint d)
 {
-    
+
     FILE *fp;
     size_t size = w * h * d;
     GLubyte *data = new GLubyte[size];			  // 8bit
@@ -309,7 +322,7 @@ GLuint initVol3DTex(const char* filename, GLuint w, GLuint h, GLuint d)
     {
         cout << "OK: open .raw file successed" << endl;
     }
-    if ( fread(data, sizeof(char), size, fp)!= size) 
+    if ( fread(data, sizeof(char), size, fp)!= size)
     {
         cout << "Error: read .raw file failed" << endl;
         exit(1);
@@ -323,7 +336,7 @@ GLuint initVol3DTex(const char* filename, GLuint w, GLuint h, GLuint d)
     glGenTextures(1, &g_volTexObj);
     // bind 3D texture target
     glBindTexture(GL_TEXTURE_3D, g_volTexObj);
-    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);	
+    glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_S, GL_REPEAT);
     glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -361,13 +374,13 @@ void initFrameBuffer(GLuint texObj, GLuint texWidth, GLuint texHeight)
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, texObj, 0);
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthBuffer);
     checkFramebufferStatus();
-    glEnable(GL_DEPTH_TEST);    
+    glEnable(GL_DEPTH_TEST);
 }
 
 void rcSetUinforms()
 {
     // setting uniforms such as
-    // ScreenSize 
+    // ScreenSize
     // StepSize
     // TransferFunc
     // ExitPoints i.e. the backface, the backface hold the ExitPoints of ray casting
@@ -397,19 +410,7 @@ void rcSetUinforms()
     }
     GL_ERROR();
     GLint transferFuncLoc = glGetUniformLocation(g_programHandle, "TransferFunc");
-    if (transferFuncLoc >= 0)
-    {
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_1D, g_tffTexObj);
-	glUniform1i(transferFuncLoc, 0);
-    }
-    else
-    {
-	cout << "TransferFunc"
-	     << "is not bind to the uniform"
-	     << endl;
-    }
-    GL_ERROR();    
+    GL_ERROR();
     GLint backFaceLoc = glGetUniformLocation(g_programHandle, "ExitPoints");
     if (backFaceLoc >= 0)
     {
@@ -423,7 +424,7 @@ void rcSetUinforms()
 	     << "is not bind to the uniform"
 	     << endl;
     }
-    GL_ERROR();    
+    GL_ERROR();
     GLint volumeLoc = glGetUniformLocation(g_programHandle, "VolumeTex");
     if (volumeLoc >= 0)
     {
@@ -437,22 +438,22 @@ void rcSetUinforms()
 	     << "is not bind to the uniform"
 	     << endl;
     }
-    
+
 }
 // init the shader object and shader program
 void initShader()
 {
 // vertex shader object for first pass
-    g_bfVertHandle = initShaderObj("shader/backface.vert", GL_VERTEX_SHADER);
+    g_bfVertHandle = initShaderObj("../shader/backface.vert", GL_VERTEX_SHADER);
 // fragment shader object for first pass
-    g_bfFragHandle = initShaderObj("shader/backface.frag", GL_FRAGMENT_SHADER);
+    g_bfFragHandle = initShaderObj("../shader/backface.frag", GL_FRAGMENT_SHADER);
 // vertex shader object for second pass
-    g_rcVertHandle = initShaderObj("shader/raycasting.vert", GL_VERTEX_SHADER);
+    g_rcVertHandle = initShaderObj("../shader/raycasting.vert", GL_VERTEX_SHADER);
 // fragment shader object for second pass
-    g_rcFragHandle = initShaderObj("shader/raycasting.frag", GL_FRAGMENT_SHADER);
+    g_rcFragHandle = initShaderObj("../shader/raycasting.frag", GL_FRAGMENT_SHADER);
 // create the shader program , use it in an appropriate time
     g_programHandle = createShaderPgm();
-// »ñµÃÓÉ×ÅÉ«Æ÷±àÒëÆ÷·ÖÅäµÄË÷Òý(¿ÉÑ¡)
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½Ñ¡)
 }
 
 // link the shader objects using the shader program
@@ -530,15 +531,15 @@ void display()
     // glBindTexture(GL_TEXTURE_2D, 0);
     // glDisable(GL_TEXTURE_2D);
     // glActiveTexture(GL_TEXTURE2);
-    // glBindTexture(GL_TEXTURE_3D, 0);    
+    // glBindTexture(GL_TEXTURE_3D, 0);
     // glDisable(GL_TEXTURE_3D);
     // glActiveTexture(GL_TEXTURE0);
-    // glBindTexture(GL_TEXTURE_1D, 0);    
+    // glBindTexture(GL_TEXTURE_1D, 0);
     // glDisable(GL_TEXTURE_1D);
     // glActiveTexture(GL_TEXTURE0);
     glUseProgram(0);
-    GL_ERROR(); 
-    
+    GL_ERROR();
+
     // // for test the first pass
     // glBindFramebuffer(GL_READ_FRAMEBUFFER, g_frameBuffer);
     // checkFramebufferStatus();
@@ -566,13 +567,13 @@ void render(GLenum cullFace)
     //  transform the box
     glm::mat4 projection = glm::perspective(60.0f, (GLfloat)g_winWidth/g_winHeight, 0.1f, 400.f);
     glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 2.0f),
-    				 glm::vec3(0.0f, 0.0f, 0.0f), 
+    				 glm::vec3(0.0f, 0.0f, 0.0f),
     				 glm::vec3(0.0f, 1.0f, 0.0f));
     glm::mat4 model = mat4(1.0f);
     model *= glm::rotate((float)g_angle, glm::vec3(0.0f, 1.0f, 0.0f));
     // to make the "head256.raw" i.e. the volume data stand up.
     model *= glm::rotate(90.0f, vec3(1.0f, 0.0f, 0.0f));
-    model *= glm::translate(glm::vec3(-0.5f, -0.5f, -0.5f)); 
+    model *= glm::translate(glm::vec3(-0.5f, -0.5f, -0.5f));
     // notice the multiplication order: reverse order of transform
     glm::mat4 mvp = projection * view * model;
     GLuint mvpIdx = glGetUniformLocation(g_programHandle, "MVP");
@@ -614,7 +615,7 @@ void keyboard(unsigned char key, int x, int y)
 
 int main(int argc, char** argv)
 {
-    
+
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
     glutInitWindowSize(400, 400);
@@ -625,7 +626,7 @@ int main(int argc, char** argv)
 	/* Problem: glewInit failed, something is seriously wrong. */
 	fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
     }
-  
+
     glutKeyboardFunc(&keyboard);
     glutDisplayFunc(&display);
     glutReshapeFunc(&reshape);
@@ -634,4 +635,3 @@ int main(int argc, char** argv)
     glutMainLoop();
     return EXIT_SUCCESS;
 }
-

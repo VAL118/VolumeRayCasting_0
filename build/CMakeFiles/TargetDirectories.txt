@@ -1,0 +1,6 @@
+/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/edit_cache.dir
+/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/rebuild_cache.dir
+/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/CMakeFiles/main.dir
+/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/include/CMakeFiles/rebuild_cache.dir
+/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/include/CMakeFiles/edit_cache.dir
+/home/vlad/FromGit/Volume_Rendering_Using_GLSL/build/include/CMakeFiles/GLEW_1130.dir
