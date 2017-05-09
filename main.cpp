@@ -17,15 +17,6 @@
 using namespace std;
 using glm::mat4;
 using glm::vec3;
-GLuint AAAAAADELETE_IT;
-GLuint AAAAAADELETE_IT1;
-GLuint AAAAAADELETE_IT2;
-GLuint AAAAAADELETE_IT;
-GLuint AAAAAADELETE_IT1;
-GLuint AAAAAADELETE_IT2;
-GLuint AAAAAADELETE_IT;
-GLuint AAAAAADELETE_IT1;
-GLuint AAAAAADELETE_IT2;
 GLuint g_vao;
 GLuint g_programHandle;
 GLuint g_winWidth = 400;
@@ -33,9 +24,6 @@ GLuint g_winHeight = 400;
 GLint g_angle = 0;
 GLuint g_frameBuffer;
 // transfer function
-GLuint AAAAAADELETE_IT;
-GLuint AAAAAADELETE_IT1;
-GLuint AAAAAADELETE_IT2;
 GLuint g_tffTexObj;
 GLuint g_bfTexObj;
 GLuint g_texWidth;
