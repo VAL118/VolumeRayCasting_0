@@ -3,7 +3,6 @@
 
 CMakeFiles/main.dir/main.cpp.o: .././include/GL/freeglut_std.h
 CMakeFiles/main.dir/main.cpp.o: .././include/GL/gl.h
-CMakeFiles/main.dir/main.cpp.o: .././include/GL/glew.h
 CMakeFiles/main.dir/main.cpp.o: .././include/GL/glext.h
 CMakeFiles/main.dir/main.cpp.o: .././include/GL/glm/./core/_detail.hpp
 CMakeFiles/main.dir/main.cpp.o: .././include/GL/glm/./core/_fixes.hpp
@@ -80,5 +79,6 @@ CMakeFiles/main.dir/main.cpp.o: .././include/GL/glm/gtx/transform.inl
 CMakeFiles/main.dir/main.cpp.o: .././include/GL/glm/gtx/transform2.hpp
 CMakeFiles/main.dir/main.cpp.o: .././include/GL/glm/gtx/transform2.inl
 CMakeFiles/main.dir/main.cpp.o: .././include/GL/glut.h
+CMakeFiles/main.dir/main.cpp.o: ../include/glew-1.13.0/include/GL/glew.h
 CMakeFiles/main.dir/main.cpp.o: ../main.cpp
 

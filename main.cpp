@@ -2,10 +2,9 @@
 #include <iostream>
 #include <cstdio>
 #include <cstdlib>
-#include <include/GL/glew.h>
+#include <GL/glew.h>
 #include <include/GL/gl.h>
 #include <include/GL/glext.h>
-#define GLUT_DISABLE_ATEXIT_HACK
 #include <include/GL/glut.h>
 #include <include/GL/glm/glm.hpp>
 #include <include/GL/glm/gtc/matrix_transform.hpp>

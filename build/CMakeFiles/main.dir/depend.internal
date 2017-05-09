@@ -4,7 +4,6 @@
 CMakeFiles/main.dir/main.cpp.o
  .././include/GL/freeglut_std.h
  .././include/GL/gl.h
- .././include/GL/glew.h
  .././include/GL/glext.h
  .././include/GL/glm/./core/_detail.hpp
  .././include/GL/glm/./core/_fixes.hpp
@@ -81,4 +80,5 @@ CMakeFiles/main.dir/main.cpp.o
  .././include/GL/glm/gtx/transform2.hpp
  .././include/GL/glm/gtx/transform2.inl
  .././include/GL/glut.h
+ ../include/glew-1.13.0/include/GL/glew.h
  /home/vlad/FromGit/Volume_Rendering_Using_GLSL/main.cpp
