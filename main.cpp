@@ -24,7 +24,6 @@ GLuint g_winHeight = 400;
 GLint g_angle = 0;
 GLuint g_frameBuffer;
 // transfer function
-GLuint g_tffTexObj;
 GLuint g_bfTexObj;
 GLuint g_texWidth;
 GLuint g_texHeight;
@@ -67,7 +66,7 @@ void init()
     g_texHeight = g_winHeight;
     initVBO();
     initShader();
-    g_tffTexObj = initTFF1DTex("../tff.dat");
+    initTFF1DTex("../tff.dat");
     g_bfTexObj = initFace2DTex(g_texWidth, g_texHeight);
     g_volTexObj = initVol3DTex("../head256.raw", 256, 256, 225);
     GL_ERROR();
@@ -432,11 +431,11 @@ void rcSetUinforms()
 void initShader()
 {
 // vertex shader object for first pass
-    g_bfVertHandle = initShaderObj("../shader/backface.vert", GL_VERTEX_SHADER);
+    g_bfVertHandle = initShaderObj("../shader/firstPass.vert", GL_VERTEX_SHADER);
 // fragment shader object for first pass
-    g_bfFragHandle = initShaderObj("../shader/backface.frag", GL_FRAGMENT_SHADER);
+    g_bfFragHandle = initShaderObj("../shader/firstPass.frag", GL_FRAGMENT_SHADER);
 // vertex shader object for second pass
-    g_rcVertHandle = initShaderObj("../shader/raycasting.vert", GL_VERTEX_SHADER);
+    g_rcVertHandle = initShaderObj("../shader/secondPass.vert", GL_VERTEX_SHADER);
 // fragment shader object for second pass
     g_rcFragHandle = initShaderObj("../shader/raycasting.frag", GL_FRAGMENT_SHADER);
 // create the shader program , use it in an appropriate time
@@ -458,9 +457,9 @@ void linkShader(GLuint shaderPgm, GLuint newVertHandle, GLuint newFragHandle)
 	glDetachShader(shaderPgm, shaders[i]);
     }
     // Bind index 0 to the shader input variable "VerPos"
-    glBindAttribLocation(shaderPgm, 0, "VerPos");
+    glBindAttribLocation(shaderPgm, 0, "position");
     // Bind index 1 to the shader input variable "VerClr"
-    glBindAttribLocation(shaderPgm, 1, "VerClr");
+    glBindAttribLocation(shaderPgm, 1, "vertColor");
     GL_ERROR();
     glAttachShader(shaderPgm,newVertHandle);
     glAttachShader(shaderPgm,newFragHandle);
