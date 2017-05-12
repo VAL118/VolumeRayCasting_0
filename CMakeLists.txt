@@ -46,7 +46,7 @@ set(ALL_LIBS
 )
 
 add_executable(main
-	main2.cpp
+	main.cpp
 )
 target_link_libraries(main
 	${ALL_LIBS}

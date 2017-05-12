@@ -435,9 +435,9 @@ void initShader()
 // fragment shader object for first pass
     g_bfFragHandle = initShaderObj("../shader/firstPass.frag", GL_FRAGMENT_SHADER);
 // vertex shader object for second pass
-    g_rcVertHandle = initShaderObj("../shader/secondPass.vert", GL_VERTEX_SHADER);
+    // g_rcVertHandle = initShaderObj("../shader/secondPass.vert", GL_VERTEX_SHADER);
 // fragment shader object for second pass
-    g_rcFragHandle = initShaderObj("../shader/raycasting.frag", GL_FRAGMENT_SHADER);
+    // g_rcFragHandle = initShaderObj("../shader/raycasting.frag", GL_FRAGMENT_SHADER);
 // create the shader program , use it in an appropriate time
     g_programHandle = createShaderPgm();
 // ��������ɫ������������������(��ѡ)
@@ -505,7 +505,7 @@ void display()
     GL_ERROR();
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glViewport(0, 0, g_winWidth, g_winHeight);
-    linkShader(g_programHandle, g_rcVertHandle, g_rcFragHandle);
+    // linkShader(g_programHandle, g_rcVertHandle, g_rcFragHandle);
     GL_ERROR();
     glUseProgram(g_programHandle);
     rcSetUinforms();
@@ -553,7 +553,7 @@ void render(GLenum cullFace)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //  transform the box
     glm::mat4 projection = glm::perspective(60.0f, (GLfloat)g_winWidth/g_winHeight, 0.1f, 400.f);
-    glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 2.0f),
+    glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, -2.0f),
     				 glm::vec3(0.0f, 0.0f, 0.0f),
     				 glm::vec3(0.0f, 1.0f, 0.0f));
     glm::mat4 model = mat4(1.0f);
@@ -617,7 +617,7 @@ int main(int argc, char** argv)
     glutKeyboardFunc(&keyboard);
     glutDisplayFunc(&display);
     glutReshapeFunc(&reshape);
-    glutIdleFunc(&rotateDisplay);
+    // glutIdleFunc(&rotateDisplay);
     init();
     glutMainLoop();
     return EXIT_SUCCESS;

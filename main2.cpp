@@ -24,6 +24,7 @@ GLuint g_winHeight = 400;
 GLint g_angle = 0;
 GLuint g_frameBuffer;
 // transfer function
+GLuint g_tffTexObj;
 GLuint g_bfTexObj;
 GLuint g_texWidth;
 GLuint g_texHeight;
@@ -75,7 +76,7 @@ void init()
     g_texHeight = g_winHeight;
     initVBO();
     initShader();
-    initTFF1DTex("../tff.dat");
+    g_tffTexObj = initTFF1DTex("../tff.dat");
     g_bfTexObj = initFace2DTex(g_texWidth, g_texHeight);
     cout << g_volTexObj << endl;
     g_volTexObj = initVol2DTex("../bonsai.raw", 4096, 4096);
@@ -390,6 +391,13 @@ void rcSetUinforms()
     }
     GL_ERROR();
     GLint transferFuncLoc = glGetUniformLocation(g_programHandle, "uTransferFunction");
+    if (transferFuncLoc >= 0)
+    {
+      	glActiveTexture(GL_TEXTURE0);
+      	glBindTexture(GL_TEXTURE_2D, g_bfTexObj);
+      	glUniform1i(transferFuncLoc, 0);
+    }
+    else cout << "uBackCoord is not bind to the uniform\n";
     GL_ERROR();
     GLint backFaceLoc = glGetUniformLocation(g_programHandle, "uBackCoord");
     if (backFaceLoc >= 0)
