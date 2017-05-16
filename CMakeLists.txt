@@ -39,10 +39,43 @@ include_directories(
   .
 )
 
+#search SOIL
+
+
+find_path(SOIL_INCLUDE_DIR SOIL.h
+	/usr/include
+	/usr/local/include
+	/opt/local/include
+	${CMAKE_SOURCE_DIR}/includes
+)
+
+find_library(SOIL_LIBRARY SOIL
+	/usr/lib64
+	/usr/lib
+	/usr/local/lib
+	/opt/local/lib
+	${CMAKE_SOURCE_DIR}/lib
+)
+
+IF(SOIL_INCLUDE_DIR AND SOIL_LIBRARY)
+	SET( SOIL_FOUND TRUE )
+	SET( SOIL_LIBRARIES ${SOIL_LIBRARY} )
+ENDIF(SOIL_INCLUDE_DIR AND SOIL_LIBRARY)
+IF(SOIL_FOUND)
+	IF(NOT SOIL_FIND_QUIETLY)
+	MESSAGE(STATUS "Found SOIL: ${SOIL_LIBRARY}")
+	ENDIF(NOT SOIL_FIND_QUIETLY)
+ELSE(SOIL_FOUND)
+	IF(SOIL_FIND_REQUIRED)
+	MESSAGE(FATAL_ERROR "Could not find libSOIL")
+	ENDIF(SOIL_FIND_REQUIRED)
+ENDIF(SOIL_FOUND)
+
 set(ALL_LIBS
 	${OPENGL_LIBRARY}
   ${GLUT_LIBRARY}
   GLEW_1130
+  ${SOIL_LIBRARY}
 )
 
 add_executable(main
