@@ -24,16 +24,14 @@ using glm::vec3;
 
 GLuint g_vao;
 GLuint g_programHandle;
-GLuint g_winWidth = 400;
-GLuint g_winHeight = 400;
+GLuint g_winWidth = 800;
+GLuint g_winHeight = 800;
 GLint g_angle = 0;
 GLuint g_frameBuffer;
 // transfer function
-GLuint g_tffTexObj;
 GLuint g_bfTexObj;
 GLuint g_texWidth;
 GLuint g_texHeight;
-GLuint g_volTexObj;
 GLuint g_rcVertHandle;
 GLuint g_rcFragHandle;
 GLuint g_bfVertHandle;
@@ -43,10 +41,10 @@ GLuint trTex;
 
 float g_stepSize = 256.0;
 float g_NumberOfSlices = 255.0;
-float g_MinGrayVal = 0.0; // 0
+float g_MinGrayVal = 0.001; // 0
 float g_MaxGrayVal = 1.0; // 1
-float g_OpacityVal = 0.5; // 40
-float g_ColorVal = 0.4; // 0.4
+float g_OpacityVal = 4.0; // 40
+float g_ColorVal = 1.0; // 0.4
 float g_AbsorptionModeIndex = 1.0; // -1.0 ? 1
 float g_SlicesOverX = 16.0; // 16
 float g_SlicesOverY = 16.0; // 16
@@ -79,11 +77,28 @@ void display(void);
 void initVBO();
 void initShader();
 void initFrameBuffer(GLuint, GLuint, GLuint);
-GLuint initPNG2DTex(const char* filename, GLuint width, GLuint height);
 GLuint initFace2DTex(GLuint texWidth, GLuint texHeight);
-GLuint initVol2DTex(const char* filename, GLuint width, GLuint height);
 
-// GLuint loadTexture(const string filename, int &width, int &height);
+void loadImage(const char* pathToFile, GLuint* texture, int* width, int* height)
+{
+  unsigned char* tempTexture = SOIL_load_image(pathToFile, width, height, 0, SOIL_LOAD_RGBA);
+
+  glEnable(GL_TEXTURE_2D);
+  glGenTextures(1, texture);
+  glBindTexture(GL_TEXTURE_2D, *texture);
+
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, *width, *height, 0, GL_RGBA, GL_UNSIGNED_BYTE, tempTexture);
+  glGenerateMipmap(GL_TEXTURE_2D);
+
+  SOIL_free_image_data(tempTexture);
+}
+
 
 void render(GLenum cullFace);
 void init()
@@ -92,57 +107,13 @@ void init()
     g_texHeight = g_winHeight;
     initVBO();
     initShader();
-    // g_tffTexObj = initPNG2DTex("../cm_BrBG_r.png", 256, 10);
 
 
-    unsigned char* tempTexture0 = SOIL_load_image("../cm_BrBG_r.png", &tr_width, &tr_height, 0, SOIL_LOAD_RGBA);
-
-    glEnable(GL_TEXTURE_2D);
-    glGenTextures(1, &trTex);
-    glBindTexture(GL_TEXTURE_2D,trTex);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, tr_width, tr_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, tempTexture0);
-    glGenerateMipmap(GL_TEXTURE_2D);
-
-    SOIL_free_image_data(tempTexture0);
-
-
-
-    /*int width = 256;
-    int height = 10;
-    g_tffTexObj = loadTexture("../cm_BrBG_r.png", &width, &height);*/
+    loadImage("../bonsai.raw.png", &pngTex, &png_width, &png_height);
+    loadImage("../cm_BrBG_r.png", &trTex, &tr_width, &tr_height);
 
     g_bfTexObj = initFace2DTex(g_texWidth, g_texHeight);
-    // g_volTexObj = initVol2DTex("../bonsai.raw", 4096, 4096);
     GL_ERROR();
-
-
-    unsigned char* tempTexture = SOIL_load_image("../bonsai.raw.png", &png_width, &png_height, 0, SOIL_LOAD_RGBA);
-
-    glEnable(GL_TEXTURE_2D);
-    glGenTextures(1, &pngTex);
-    glBindTexture(GL_TEXTURE_2D,pngTex);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, png_width, png_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, tempTexture);
-    glGenerateMipmap(GL_TEXTURE_2D);
-
-    SOIL_free_image_data(tempTexture);
-
-    // GLuint TextureID  = glGetUniformLocation(programID, "myTextureSampler");
-
-
 
     initFrameBuffer(g_bfTexObj, g_texWidth, g_texHeight);
     GL_ERROR();
@@ -293,167 +264,6 @@ GLuint createShaderPgm()
     return programHandle;
 }
 
-
-// init the 1 dimentional texture for transfer function
-GLuint initPNG2DTex(const char* filename, GLuint w, GLuint h)
-{
-  FILE *fp;
-  size_t size = w * h;
-  GLubyte *data = new GLubyte[size];			  // 8bit
-  if (!(fp = fopen(filename, "rb")))
-  {
-      cout << "Error: opening .png file failed 1\n";
-      exit(EXIT_FAILURE);
-  }
-  else cout << "OK: open .png file successed\n";
-  if ( size_t sss = fread(data, sizeof(char), size, fp)!= size)
-  {
-      cout << "Error: read .png file failed 2\n";
-      // exit(1);
-  }
-  else cout << "OK: read .png file successed\n";
-
-  fclose(fp);
-
-  GLuint pngTex;
-  glGenTextures(1, &pngTex);
-  // bind 2D texture target
-  // glPixelStorei(GL_UNPACK_ALIGNMENT,1);
-
-  glBindTexture(GL_TEXTURE_2D, pngTex);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-  glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, w, h, 0, GL_RGBA, GL_FLOAT, NULL);
-
-  delete []data;
-  cout << "volume texture created" << endl;
-  return pngTex;
-}
-
-/*GLuint loadTexture(const string filename, int &width, int &height)
- {
-   //header for testing if it is a png
-   png_byte header[8];
-
-   //open file as binary
-   FILE *fp = fopen(filename.c_str(), "rb");
-   if (!fp) {
-     return TEXTURE_LOAD_ERROR;
-   }
-
-   //read the header
-   fread(header, 1, 8, fp);
-
-   //test if png
-   int is_png = !png_sig_cmp(header, 0, 8);
-   if (!is_png) {
-     fclose(fp);
-     return TEXTURE_LOAD_ERROR;
-   }
-
-   //create png struct
-   png_structp png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING, NULL,
-       NULL, NULL);
-   if (!png_ptr) {
-     fclose(fp);
-     return (TEXTURE_LOAD_ERROR);
-   }
-
-   //create png info struct
-   png_infop info_ptr = png_create_info_struct(png_ptr);
-   if (!info_ptr) {
-     png_destroy_read_struct(&png_ptr, (png_infopp) NULL, (png_infopp) NULL);
-     fclose(fp);
-     return (TEXTURE_LOAD_ERROR);
-   }
-
-   //create png info struct
-   png_infop end_info = png_create_info_struct(png_ptr);
-   if (!end_info) {
-     png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp) NULL);
-     fclose(fp);
-     return (TEXTURE_LOAD_ERROR);
-   }
-
-   //png error stuff, not sure libpng man suggests this.
-   if (setjmp(png_jmpbuf(png_ptr))) {
-     png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
-     fclose(fp);
-     return (TEXTURE_LOAD_ERROR);
-   }
-
-   //init png reading
-   png_init_io(png_ptr, fp);
-
-   //let libpng know you already read the first 8 bytes
-   png_set_sig_bytes(png_ptr, 8);
-
-   // read all the info up to the image data
-   png_read_info(png_ptr, info_ptr);
-
-   //variables to pass to get info
-   int bit_depth, color_type;
-   png_uint_32 twidth, theight;
-
-   // get info about png
-   png_get_IHDR(png_ptr, info_ptr, &twidth, &theight, &bit_depth, &color_type,
-       NULL, NULL, NULL);
-
-   //update width and height based on png info
-   width = twidth;
-   height = theight;
-
-   // Update the png info struct.
-   png_read_update_info(png_ptr, info_ptr);
-
-   // Row size in bytes.
-   int rowbytes = png_get_rowbytes(png_ptr, info_ptr);
-
-   // Allocate the image_data as a big block, to be given to opengl
-   png_byte *image_data = new png_byte[rowbytes * height];
-   if (!image_data) {
-     //clean up memory and close stuff
-     png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
-     fclose(fp);
-     return TEXTURE_LOAD_ERROR;
-   }
-
-   //row_pointers is for pointing to image_data for reading the png with libpng
-   png_bytep *row_pointers = new png_bytep[height];
-   if (!row_pointers) {
-     //clean up memory and close stuff
-     png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
-     delete[] image_data;
-     fclose(fp);
-     return TEXTURE_LOAD_ERROR;
-   }
-   // set the individual row_pointers to point at the correct offsets of image_data
-   for (int i = 0; i < height; ++i)
-     row_pointers[height - 1 - i] = image_data + i * rowbytes;
-
-   //read the png into image_data through row_pointers
-   png_read_image(png_ptr, row_pointers);
-
-   //Now generate the OpenGL texture object
-   GLuint texture;
-   glGenTextures(1, &texture);
-   glBindTexture(GL_TEXTURE_2D, texture);
-   glTexImage2D(GL_TEXTURE_2D,0, GL_RGBA, width, height, 0,
-       GL_RGB, GL_UNSIGNED_BYTE, (GLvoid*) image_data);
-   glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-   //clean up memory and close stuff
-   png_destroy_read_struct(&png_ptr, &info_ptr, &end_info);
-   delete[] image_data;
-   delete[] row_pointers;
-   fclose(fp);
-
-   return texture;
- }*/
-
-// init the 2D texture for render backface 'bf' stands for backface
 GLuint initFace2DTex(GLuint bfTexWidth, GLuint bfTexHeight)
 {
     GLuint backFace2DTex;
@@ -465,42 +275,6 @@ GLuint initFace2DTex(GLuint bfTexWidth, GLuint bfTexHeight)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, bfTexWidth, bfTexHeight, 0, GL_RGBA, GL_FLOAT, NULL);
     return backFace2DTex;
-}
-// init 3D texture to store the volume data used fo ray casting
-GLuint initVol2DTex(const char* filename, GLuint w, GLuint h)
-{
-    FILE *fp;
-    size_t size = w * h;
-    GLubyte *data = new GLubyte[size];			  // 8bit
-    if (!(fp = fopen(filename, "rb")))
-    {
-        cout << "Error: opening .raw file failed" << endl;
-        exit(EXIT_FAILURE);
-    }
-    else cout << "OK: open .raw file successed\n";
-    if (size_t sss = fread(data, sizeof(char), size, fp) != size)
-    {
-        cout << "Error: read .raw file failed" << endl;
-        exit(1);
-    }
-    else cout << "OK: read .raw file successed\n";
-
-    fclose(fp);
-
-    glGenTextures(1, &g_volTexObj);
-    // bind 2D texture target
-    // glPixelStorei(GL_UNPACK_ALIGNMENT,1);
-
-    glBindTexture(GL_TEXTURE_2D, g_volTexObj);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA16F, w, h, 0, GL_RGBA, GL_FLOAT, NULL);
-
-    delete []data;
-    cout << "volume texture created" << endl;
-    return g_volTexObj;
 }
 
 void checkFramebufferStatus()
@@ -620,8 +394,7 @@ void linkShader(GLuint shaderPgm, GLuint newVertHandle, GLuint newFragHandle)
     GLsizei count;
     GLuint shaders[maxCount];
     glGetAttachedShaders(shaderPgm, maxCount, &count, shaders);
-    // cout << "get VertHandle: " << shaders[0] << endl;
-    // cout << "get FragHandle: " << shaders[1] << endl;
+
     GL_ERROR();
     for (int i = 0; i < count; i++) {
 	     glDetachShader(shaderPgm, shaders[i]);
@@ -672,7 +445,7 @@ void display()
 void render(GLenum cullFace)
 {
     GL_ERROR();
-    glClearColor(0.2f,0.2f,0.2f,1.0f);
+    glClearColor(0.0f,0.0f,0.0f,1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //  transform the box
     glm::mat4 projection = glm::perspective(60.0f, (GLfloat)g_winWidth/g_winHeight, 0.1f, 400.f);
@@ -682,7 +455,7 @@ void render(GLenum cullFace)
     glm::mat4 model = mat4(1.0f);
     model *= glm::rotate((float)g_angle, glm::vec3(0.0f, 1.0f, 0.0f));
     // to make the "head256.raw" i.e. the volume data stand up.
-    model *= glm::rotate(0.0f, vec3(1.0f, 0.0f, 0.0f));
+    model *= glm::rotate(180.0f, vec3(1.0f, 0.0f, 0.0f));
     model *= glm::translate(glm::vec3(-0.5f, -0.5f, -0.5f));
     // notice the multiplication order: reverse order of transform
     glm::mat4 mvp = projection * view * model;
@@ -726,7 +499,7 @@ int main(int argc, char** argv)
 {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
-    glutInitWindowSize(400, 400);
+    glutInitWindowSize(800, 800);
     glutCreateWindow("GLUT Test");
     GLenum err = glewInit();
     if (GLEW_OK != err)

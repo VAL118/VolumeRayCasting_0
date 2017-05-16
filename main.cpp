@@ -19,8 +19,8 @@ using glm::vec3;
 
 GLuint g_vao;
 GLuint g_programHandle;
-GLuint g_winWidth = 400;
-GLuint g_winHeight = 400;
+GLuint g_winWidth = 800;
+GLuint g_winHeight = 800;
 GLint g_angle = 0;
 GLuint g_frameBuffer;
 // transfer function
@@ -608,7 +608,7 @@ int main(int argc, char** argv)
 
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
-    glutInitWindowSize(400, 400);
+    glutInitWindowSize(800, 800);
     glutCreateWindow("GLUT Test");
     GLenum err = glewInit();
     if (GLEW_OK != err)
