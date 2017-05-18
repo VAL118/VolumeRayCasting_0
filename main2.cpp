@@ -13,8 +13,7 @@
 
 #include <SOIL/SOIL.h>
 
-// #include <png.h>
-// #define TEXTURE_LOAD_ERROR 0
+#include <include/GL/glui.h>
 
 
 #define GL_ERROR() checkForOpenGLError(__FILE__, __LINE__)
@@ -54,6 +53,31 @@ int tr_height = 10;
 
 int png_width = 4096;
 int png_height = 4096;
+
+
+int   last_x, last_y;
+float rotationX = 0.0, rotationY = 0.0;
+
+int main_window;
+int segments = 8;
+int segments2 = 8;
+float scale = 1.0;
+
+/** Pointers to the windows and some of the controls we'll create **/
+GLUI *glui, *glui2;
+GLUI_Spinner    *light0_spinner, *light1_spinner;
+GLUI_RadioGroup *radio;
+GLUI_Panel      *obj_panel;
+
+/********** User IDs for callbacks ********/
+#define LIGHT0_ENABLED_ID    200
+#define LIGHT1_ENABLED_ID    201
+#define LIGHT0_INTENSITY_ID  250
+#define LIGHT1_INTENSITY_ID  260
+#define ENABLE_ID            300
+#define DISABLE_ID           301
+#define SHOW_ID              302
+#define HIDE_ID              303
 
 
 int checkForOpenGLError(const char* file, int line)
@@ -440,6 +464,12 @@ void display()
     glUseProgram(0);
     GL_ERROR();
 
+    glPushMatrix();
+    glTranslatef( -.5, 0.0, 0.0 );
+    glRotatef(rotationY, 0.0, 1.0, 0.0 );
+    glRotatef(rotationX, 1.0, 0.0, 0.0 );
+    glPopMatrix();
+
     glutSwapBuffers();
 }
 void render(GLenum cullFace)
@@ -495,24 +525,106 @@ void keyboard(unsigned char key, int x, int y)
     }
 }
 
+
+/***************************************** myGlutMouse() **********/
+
+void myGlutMouse(int button, int button_state, int x, int y )
+{
+  if ( button == GLUT_LEFT_BUTTON && button_state == GLUT_DOWN ) {
+    last_x = x;
+    last_y = y;
+  }
+}
+
+
+/***************************************** myGlutMotion() **********/
+
+void myGlutMotion(int x, int y)
+{
+  rotationX += (float) (y - last_y);
+  rotationY += (float) (x - last_x);
+
+  last_x = x;
+  last_y = y;
+
+  glutPostRedisplay();
+}
+
+
 int main(int argc, char** argv)
 {
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
-    glutInitWindowSize(800, 800);
-    glutCreateWindow("GLUT Test");
-    GLenum err = glewInit();
-    if (GLEW_OK != err)
-    {
-    	/* Problem: glewInit failed, something is seriously wrong. */
-    	fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
-    }
+  glutInit(&argc, argv);
+  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+  glutInitWindowPosition( 50, 50 );
+  glutInitWindowSize(800, 800);
 
-    glutKeyboardFunc(&keyboard);
-    glutDisplayFunc(&display);
-    glutReshapeFunc(&reshape);
-    glutIdleFunc(&rotateDisplay);
-    init();
-    glutMainLoop();
-    return EXIT_SUCCESS;
+  main_window = glutCreateWindow("OpenGL VRC");
+  GLenum err = glewInit();
+  if (GLEW_OK != err)
+  {
+  	/* Problem: glewInit failed, something is seriously wrong. */
+  	fprintf(stderr, "Error: %s\n", glewGetErrorString(err));
+  }
+
+  glutDisplayFunc(&display);
+  glutReshapeFunc(&reshape);
+  glutKeyboardFunc(&keyboard);
+  glutMotionFunc(myGlutMotion);
+  glutMouseFunc(myGlutMouse);
+  glutIdleFunc(&rotateDisplay);
+  init();
+
+  /****************************************/
+  /*         Here's the GLUI code         */
+  /****************************************/
+
+  printf( "GLUI version: %3.2f\n", GLUI_Master.get_version() );
+
+  /*** Create the side subwindow ***/
+  glui = GLUI_Master.create_glui_subwindow(main_window, GLUI_SUBWINDOW_RIGHT);
+
+  // obj_panel = new GLUI_Rollout(glui, "Properties", false);
+  obj_panel = new GLUI_Panel(glui, "");
+
+  /***** Control for object params *****/
+
+  GLUI_Scrollbar *sb;
+
+  GLUI_StaticText *op_label = new GLUI_StaticText(obj_panel, "Opacity:");
+  sb = new GLUI_Scrollbar(obj_panel, "Opacity", GLUI_SCROLL_HORIZONTAL, &g_OpacityVal);
+  sb->set_float_limits(0, 30);
+
+  GLUI_Separator *separator;
+  separator = new GLUI_Separator(obj_panel);
+
+  GLUI_StaticText *min_gr_label = new GLUI_StaticText(obj_panel, "MinGrayVal:");
+  sb = new GLUI_Scrollbar(obj_panel, "MinGrayVal", GLUI_SCROLL_HORIZONTAL, &g_MinGrayVal);
+  sb->set_float_limits(0, 1);
+
+  separator = new GLUI_Separator(obj_panel);
+
+  GLUI_StaticText *max_gr_label = new GLUI_StaticText(obj_panel, "MaxGrayVal:");
+  sb = new GLUI_Scrollbar(obj_panel, "MaxGrayVal", GLUI_SCROLL_HORIZONTAL, &g_MinGrayVal);
+  sb->set_float_limits(0, 1);
+
+  separator = new GLUI_Separator(obj_panel);
+
+  GLUI_StaticText *color_val_label = new GLUI_StaticText(obj_panel, "ColorVal:");
+  sb = new GLUI_Scrollbar(obj_panel, "ColorVal", GLUI_SCROLL_HORIZONTAL, &g_ColorVal);
+  sb->set_float_limits(0, 1.0);
+
+  separator = new GLUI_Separator(obj_panel);
+
+  // GLUI_StaticText *step_size_label = new GLUI_StaticText(obj_panel, "StepSize:");
+  GLUI_Spinner *spinner = new GLUI_Spinner(obj_panel, "StepSize:", &g_stepSize);
+  spinner->set_float_limits(0, 256.0);
+  spinner->set_alignment(GLUI_ALIGN_RIGHT);
+  sb = new GLUI_Scrollbar(obj_panel, "StepSize", GLUI_SCROLL_HORIZONTAL, &g_stepSize);
+  sb->set_float_limits(0, 256.0);
+
+  glui->set_main_gfx_window(main_window);
+
+
+  glutMainLoop();
+  return EXIT_SUCCESS;
 }

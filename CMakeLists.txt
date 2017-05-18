@@ -1,6 +1,6 @@
 # CMake entry point
 cmake_minimum_required (VERSION 3.0)
-project (Tutorials)
+project (OpenGL_VRC)
 
 find_package(GLUT REQUIRED)
 include_directories(${GLUT_INCLUDE_DIRS})
@@ -10,6 +10,8 @@ if(NOT GLUT_FOUND)
     message(ERROR " GLUT not found!")
 endif(NOT GLUT_FOUND)
 
+SET(glui_DIR /usr/lib/lib/cmake/glui/)
+find_package(glui CONFIG REQUIRED)
 
 find_package(OpenGL REQUIRED)
 
@@ -51,7 +53,7 @@ find_path(SOIL_INCLUDE_DIR SOIL.h
 
 find_library(SOIL_LIBRARY SOIL
 	/usr/lib64
-	/usr/lib
+  /usr/lib
 	/usr/local/lib
 	/opt/local/lib
 	${CMAKE_SOURCE_DIR}/lib
@@ -78,9 +80,5 @@ set(ALL_LIBS
   ${SOIL_LIBRARY}
 )
 
-add_executable(main
-	main2.cpp
-)
-target_link_libraries(main
-	${ALL_LIBS}
-)
+add_executable(main main2.cpp)
+target_link_libraries(main PUBLIC glui::glui ${ALL_LIBS})
