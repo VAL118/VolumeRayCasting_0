@@ -57,6 +57,9 @@ int tr_height = 10;
 int png_width = 4096;
 int png_height = 4096;
 
+const char *string_list[] = {"../bonsai.raw.png", "../teapot.raw.png", "../foot.raw.png"};
+int   curr_string = 0;
+int prev_string = -1;
 
 int   last_x, last_y;
 float rotationX = 0.0, rotationY = 0.0;
@@ -178,7 +181,7 @@ void init()
     initShader();
 
 
-    loadImage("../bonsai.raw.png", &pngTex, &png_width, &png_height);
+    loadImage(string_list[curr_string], &pngTex, &png_width, &png_height);
     loadImage("../cm_BrBG_r.png", &trTex, &tr_width, &tr_height);
 
     g_bfTexObj = initFace2DTex(g_texWidth, g_texHeight);
@@ -515,6 +518,12 @@ void display()
     glUseProgram(0);
     GL_ERROR();
 
+    if (curr_string != prev_string) {
+      prev_string = curr_string;
+      init();
+      glutPostRedisplay();
+    }
+
 
 
 
@@ -686,7 +695,7 @@ int main(int argc, char** argv)
   glutMotionFunc(&myGlutMotion);
   glutMouseFunc(&myGlutMouse);
   //glutIdleFunc(&rotateDisplay);
-  init();
+  // init();
 
   /****************************************/
   /*         Here's the GLUI code         */
@@ -738,7 +747,16 @@ int main(int argc, char** argv)
   spinner->set_float_limits(0, 256.0);
   spinner->set_alignment(GLUI_ALIGN_RIGHT);
   sb = new GLUI_Scrollbar(obj_panel, "StepSize", GLUI_SCROLL_HORIZONTAL, &g_stepSize);
-  sb->set_float_limits(0, 256.0);
+  sb->set_float_limits(0, 1024.0);
+
+  /**** Add listbox ****/
+  new GLUI_StaticText( glui, "" );
+  GLUI_Listbox *list = new GLUI_Listbox( glui, "Model:", &curr_string );
+  int i;
+  for( i=0; i < 3; i++ )
+    list->add_item( i, string_list[i] );
+
+  init();
 
   glui->set_main_gfx_window(main_window);
 
