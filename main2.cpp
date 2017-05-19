@@ -105,6 +105,31 @@ void initShader();
 void initFrameBuffer(GLuint, GLuint, GLuint);
 GLuint initFace2DTex(GLuint texWidth, GLuint texHeight);
 
+double GetTickCount(void)
+{
+  struct timespec now;
+  if (clock_gettime(CLOCK_MONOTONIC, &now))
+    return 0;
+  return now.tv_sec * 1000.0 + now.tv_nsec / 1000000.0;
+}
+
+void CalculateFrameRate()
+{
+    static float framesPerSecond    = 0.0f;       // This will store our fps
+    static float lastTime   = 0.0f;       // This will hold the time from the last frame
+    float currentTime = GetTickCount() * 0.001f;
+    ++framesPerSecond;
+    if( currentTime - lastTime >= 1.0f )
+    {
+        // printf("%f ms/frame\n", 1000.0/double(framesPerSecond));
+        printf("%.1f FPS\n", framesPerSecond);
+        // lastTime++;
+        lastTime = currentTime;
+        // if(SHOW_FPS == 1) fprintf(stderr, "\nCurrent Frames Per Second: %d\n\n", (int)framesPerSecond);
+        framesPerSecond = 0;
+    }
+}
+
 void loadImage(const char* pathToFile, GLuint* texture, int* width, int* height)
 {
   unsigned char* tempTexture = SOIL_load_image(pathToFile, width, height, 0, SOIL_LOAD_RGBA);
@@ -466,6 +491,8 @@ void display()
     glUseProgram(0);
     GL_ERROR();
 
+    CalculateFrameRate();
+
     // glPushMatrix();
     // glTranslatef( -.5, 0.0, 0.0 );
     // glRotatef(rotationY, 0.0, 1.0, 0.0 );
@@ -551,9 +578,6 @@ void myGlutMotion(int x, int y )
   last_x = x;
   last_y = y;
 
-  std::cout << "MOTION" << '\n';
-  std::cout << rotationX << '\n';
-  std::cout << rotationY << '\n';
   glutPostRedisplay();
 }
 
