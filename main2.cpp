@@ -57,6 +57,8 @@ int png_height = 4096;
 
 int   last_x, last_y;
 float rotationX = 0.0, rotationY = 0.0;
+float initialFoV = 45.0f;
+float FoV=45.0f;
 
 int main_window;
 int segments = 8;
@@ -483,7 +485,7 @@ void render(GLenum cullFace)
     glClearColor(0.0f,0.0f,0.0f,1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //  transform the box
-    glm::mat4 projection = glm::perspective(60.0f, (GLfloat)g_winWidth/g_winHeight, 0.1f, 400.f);
+    glm::mat4 projection = glm::perspective(FoV, (GLfloat)g_winWidth/g_winHeight, 0.1f, 400.f);
     // glm::mat4 view = glm::lookAt(glm::vec3(1.0f, 1.0f, 2.0f),
     // 				 glm::vec3(0.0f, 0.0f, 0.0f),
     // 				 glm::vec3(0.0f, 1.0f, 0.0f));
@@ -518,14 +520,22 @@ void render(GLenum cullFace)
 
 void myGlutMouse(int button, int button_state, int x, int y )
 {
-  if ( button == GLUT_LEFT_BUTTON && button_state == GLUT_DOWN ) {
+  if ( button == GLUT_LEFT_BUTTON && button_state == GLUT_DOWN )
+  {
     last_x = x;
     last_y = y;
-
-
-
-    //rotationX = 0.0; rotationY = 0.0;
   }
+
+  if (button == 3)
+  {
+    if (FoV > 1) FoV-=1;
+  }
+
+  if (button == 4)
+  {
+    if (FoV < 179) FoV+=1;
+  }
+  glutPostRedisplay();
 }
 
 void myGlutMotion(int x, int y )
@@ -539,7 +549,7 @@ void myGlutMotion(int x, int y )
   angleX= 180 * rotationY/g_winHeight;
 
   last_x = x;
-last_y = y;
+  last_y = y;
 
   std::cout << "MOTION" << '\n';
   std::cout << rotationX << '\n';
