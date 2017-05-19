@@ -113,11 +113,14 @@ double GetTickCount(void)
   return now.tv_sec * 1000.0 + now.tv_nsec / 1000000.0;
 }
 
+
+
 void CalculateFrameRate()
 {
     static float framesPerSecond    = 0.0f;       // This will store our fps
     static float lastTime   = 0.0f;       // This will hold the time from the last frame
     float currentTime = GetTickCount() * 0.001f;
+    //printf("%.1f FPS\n", currentTime);
     ++framesPerSecond;
     if( currentTime - lastTime >= 1.0f )
     {
@@ -127,6 +130,7 @@ void CalculateFrameRate()
         lastTime = currentTime;
         // if(SHOW_FPS == 1) fprintf(stderr, "\nCurrent Frames Per Second: %d\n\n", (int)framesPerSecond);
         framesPerSecond = 0;
+
     }
 }
 
@@ -491,7 +495,8 @@ void display()
     glUseProgram(0);
     GL_ERROR();
 
-    CalculateFrameRate();
+
+
 
     // glPushMatrix();
     // glTranslatef( -.5, 0.0, 0.0 );
@@ -631,6 +636,14 @@ void keyboard(unsigned char key, int x, int y)
 // }
 
 
+void timerCB(int millisec)
+{
+  CalculateFrameRate();
+
+glutTimerFunc(millisec, timerCB, millisec);
+glutPostRedisplay();
+}
+
 int main(int argc, char** argv)
 {
   glutInit(&argc, argv);
@@ -647,6 +660,7 @@ int main(int argc, char** argv)
   }
 
   glutDisplayFunc(&display);
+  glutTimerFunc(10, timerCB, 10);
   glutReshapeFunc(&reshape);
   glutKeyboardFunc(&keyboard);
   glutMotionFunc(&myGlutMotion);
