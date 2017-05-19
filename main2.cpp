@@ -464,14 +464,19 @@ void display()
     glUseProgram(0);
     GL_ERROR();
 
-    glPushMatrix();
-    glTranslatef( -.5, 0.0, 0.0 );
-    glRotatef(rotationY, 0.0, 1.0, 0.0 );
-    glRotatef(rotationX, 1.0, 0.0, 0.0 );
-    glPopMatrix();
+    // glPushMatrix();
+    // glTranslatef( -.5, 0.0, 0.0 );
+    // glRotatef(rotationY, 0.0, 1.0, 0.0 );
+    // glRotatef(rotationX, 1.0, 0.0, 0.0 );
+    // glPopMatrix();
 
     glutSwapBuffers();
 }
+
+float angleX=0;
+float angleY=0;
+
+
 void render(GLenum cullFace)
 {
     GL_ERROR();
@@ -479,13 +484,21 @@ void render(GLenum cullFace)
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //  transform the box
     glm::mat4 projection = glm::perspective(60.0f, (GLfloat)g_winWidth/g_winHeight, 0.1f, 400.f);
-    glm::mat4 view = glm::lookAt(glm::vec3(1.0f, 1.0f, 2.0f),
+    // glm::mat4 view = glm::lookAt(glm::vec3(1.0f, 1.0f, 2.0f),
+    // 				 glm::vec3(0.0f, 0.0f, 0.0f),
+    // 				 glm::vec3(0.0f, 1.0f, 0.0f));
+
+    glm::mat4 view = glm::lookAt(glm::vec3(0.0f, 0.0f, 3.0f),
     				 glm::vec3(0.0f, 0.0f, 0.0f),
     				 glm::vec3(0.0f, 1.0f, 0.0f));
+
     glm::mat4 model = mat4(1.0f);
-    model *= glm::rotate((float)g_angle, glm::vec3(0.0f, 1.0f, 0.0f));
+    //model *= glm::rotate((float)g_angle, glm::vec3(0.0f, 1.0f, 0.0f));
     // to make the "head256.raw" i.e. the volume data stand up.
-    model *= glm::rotate(180.0f, vec3(1.0f, 0.0f, 0.0f));
+    //model *= glm::rotate(180.0f, vec3(1.0f, 0.0f, 0.0f));
+    model *= glm::rotate(angleX, vec3(0.0f, 1.0f, 0.0f));
+    model *= glm::rotate((180.0f+angleY), vec3(1.0f, 0.0f, 0.0f));
+
     model *= glm::translate(glm::vec3(-0.5f, -0.5f, -0.5f));
     // notice the multiplication order: reverse order of transform
     glm::mat4 mvp = projection * view * model;
@@ -502,6 +515,39 @@ void render(GLenum cullFace)
     drawBox(cullFace);
     GL_ERROR();
 }
+
+void myGlutMouse(int button, int button_state, int x, int y )
+{
+  if ( button == GLUT_LEFT_BUTTON && button_state == GLUT_DOWN ) {
+    last_x = x;
+    last_y = y;
+
+
+
+    //rotationX = 0.0; rotationY = 0.0;
+  }
+}
+
+void myGlutMotion(int x, int y )
+{
+
+
+  rotationX += (float) (y - last_y);
+  rotationY += (float) (x - last_x);
+
+  angleY= 180 * rotationX/g_winWidth;
+  angleX= 180 * rotationY/g_winHeight;
+
+  last_x = x;
+last_y = y;
+
+  std::cout << "MOTION" << '\n';
+  std::cout << rotationX << '\n';
+  std::cout << rotationY << '\n';
+  glutPostRedisplay();
+}
+
+
 void rotateDisplay()
 {
     g_angle = (g_angle + 1) % 360;
@@ -525,30 +571,30 @@ void keyboard(unsigned char key, int x, int y)
     }
 }
 
-
-/***************************************** myGlutMouse() **********/
-
-void myGlutMouse(int button, int button_state, int x, int y )
-{
-  if ( button == GLUT_LEFT_BUTTON && button_state == GLUT_DOWN ) {
-    last_x = x;
-    last_y = y;
-  }
-}
-
-
-/***************************************** myGlutMotion() **********/
-
-void myGlutMotion(int x, int y)
-{
-  rotationX += (float) (y - last_y);
-  rotationY += (float) (x - last_x);
-
-  last_x = x;
-  last_y = y;
-
-  glutPostRedisplay();
-}
+//
+// /***************************************** myGlutMouse() **********/
+//
+// void myGlutMouse(int button, int button_state, int x, int y )
+// {
+//   if ( button == GLUT_LEFT_BUTTON && button_state == GLUT_DOWN ) {
+//     last_x = x;
+//     last_y = y;
+//   }
+// }
+//
+//
+// /***************************************** myGlutMotion() **********/
+//
+// void myGlutMotion(int x, int y)
+// {
+//   rotationX += (float) (y - last_y);
+//   rotationY += (float) (x - last_x);
+//
+//   last_x = x;
+//   last_y = y;
+//
+//   glutPostRedisplay();
+// }
 
 
 int main(int argc, char** argv)
@@ -569,9 +615,9 @@ int main(int argc, char** argv)
   glutDisplayFunc(&display);
   glutReshapeFunc(&reshape);
   glutKeyboardFunc(&keyboard);
-  glutMotionFunc(myGlutMotion);
-  glutMouseFunc(myGlutMouse);
-  glutIdleFunc(&rotateDisplay);
+  glutMotionFunc(&myGlutMotion);
+  glutMouseFunc(&myGlutMouse);
+  //glutIdleFunc(&rotateDisplay);
   init();
 
   /****************************************/
