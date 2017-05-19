@@ -15,6 +15,9 @@
 
 #include <include/GL/glui.h>
 
+#include <iomanip> // setprecision
+#include <sstream> // stringstream
+
 
 #define GL_ERROR() checkForOpenGLError(__FILE__, __LINE__)
 using namespace std;
@@ -23,7 +26,7 @@ using glm::vec3;
 
 GLuint g_vao;
 GLuint g_programHandle;
-GLuint g_winWidth = 800;
+GLuint g_winWidth = 900;
 GLuint g_winHeight = 800;
 GLint g_angle = 0;
 GLuint g_frameBuffer;
@@ -70,6 +73,7 @@ GLUI *glui, *glui2;
 GLUI_Spinner    *light0_spinner, *light1_spinner;
 GLUI_RadioGroup *radio;
 GLUI_Panel      *obj_panel;
+GLUI_StaticText *fps_val;
 
 /********** User IDs for callbacks ********/
 #define LIGHT0_ENABLED_ID    200
@@ -125,7 +129,17 @@ void CalculateFrameRate()
     if( currentTime - lastTime >= 1.0f )
     {
         // printf("%f ms/frame\n", 1000.0/double(framesPerSecond));
-        printf("%.1f FPS\n", framesPerSecond);
+        // printf("%.1f FPS\n", framesPerSecond);
+
+        stringstream stream;
+        stream << fixed << setprecision(2) << framesPerSecond
+          << "\tSpeed: " << 1000.0/double(framesPerSecond);
+        string str = "FPS: " + stream.str();
+
+        char *cstr = new char[str.length() + 1];
+        strcpy(cstr, str.c_str());
+        fps_val->set_text(cstr);
+        delete [] cstr;
         // lastTime++;
         lastTime = currentTime;
         // if(SHOW_FPS == 1) fprintf(stderr, "\nCurrent Frames Per Second: %d\n\n", (int)framesPerSecond);
@@ -473,6 +487,9 @@ void linkShader(GLuint shaderPgm, GLuint newVertHandle, GLuint newFragHandle)
 
 void display()
 {
+    int tx, ty, tw, th;
+    GLUI_Master.get_viewport_area( &tx, &ty, &tw, &th );
+
     glEnable(GL_DEPTH_TEST);
     GL_ERROR();
     // render to texture
@@ -485,7 +502,10 @@ void display()
     glUseProgram(0);
     GL_ERROR();
     glBindFramebuffer(GL_FRAMEBUFFER, 0);
-    glViewport(0, 0, g_winWidth, g_winHeight);
+
+    tx = (g_winWidth - tw) / 2;
+    glViewport(-tx, 0, g_winWidth, g_winHeight);
+
     linkShader(g_programHandle, g_rcVertHandle, g_rcFragHandle);
     GL_ERROR();
     glUseProgram(g_programHandle);
@@ -649,7 +669,7 @@ int main(int argc, char** argv)
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
   glutInitWindowPosition( 50, 50 );
-  glutInitWindowSize(800, 800);
+  glutInitWindowSize(900, 800);
 
   main_window = glutCreateWindow("OpenGL VRC");
   GLenum err = glewInit();
@@ -683,12 +703,16 @@ int main(int argc, char** argv)
   /***** Control for object params *****/
 
   GLUI_Scrollbar *sb;
+  GLUI_Separator *separator;
+
+  fps_val = new GLUI_StaticText(obj_panel, "120 FPS");
+
+  separator = new GLUI_Separator(obj_panel);
 
   GLUI_StaticText *op_label = new GLUI_StaticText(obj_panel, "Opacity:");
   sb = new GLUI_Scrollbar(obj_panel, "Opacity", GLUI_SCROLL_HORIZONTAL, &g_OpacityVal);
   sb->set_float_limits(0, 30);
 
-  GLUI_Separator *separator;
   separator = new GLUI_Separator(obj_panel);
 
   GLUI_StaticText *min_gr_label = new GLUI_StaticText(obj_panel, "MinGrayVal:");
